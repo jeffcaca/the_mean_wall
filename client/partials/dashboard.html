@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-xs-6">
+		<h4>The MEAN wall</h4>
+		<p>Welcome {{currentUser.name}}</p>
+	</div>
+	<div class="col-xs-6" style="text-align: right;">
+		<a href="/logout">Logout</a>
+	</div>
+</div>
+<hr class="style17">
+
+<p>Post a message</p>
+<form ng-submit="newMessage()">
+	<textarea rows="3" cols="3" class="form-control" ng-model="newMess.description"></textarea>
+	<br>
+	<input type="submit" class="btn btn-sm btn-info" value="Post">
+
+</form>
+
+<div ng-repeat="message in messages">
+	<div style="background-color: lightblue; border: 2px solid black; border-radius: 0px 50px 0px 50px; padding: 20px; margin-bottom: 25px;">
+	<h4>{{message.name}} at {{message.date | date:'MM-dd-yyyy'}}</h4>
+	<p> {{message.description}}</p>
+	<hr class="style17">
+	<div ng-repeat="showcomment in message._comments">
+
+	{{showcomment.description}} by {{showcomment.name}}
+	</div>
+	<hr class="style17">
+	<p><input type="text" ng-model="newComment.description" value="{{newComment.description}}" placeholder="Comment" class="form-control"></p>
+  <p><button type="button" class="btn btn-sm btn-primary" name="newcomment" ng-click="comment(message._id, $index)">Post a comment</button></p>
+</div>
