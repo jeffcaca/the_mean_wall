@@ -5,7 +5,7 @@ app.controller('userController', ['$scope', 'userFactory', "$location", function
 			alert('name isnt 3 characters');
 		}
 		else {userFactory.login($scope.logReg);
-			$location.url('/dashboard')
+		
 		}
 	}
 
